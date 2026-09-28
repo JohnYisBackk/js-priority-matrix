@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- BOOTSTRAP ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Priority Matrix</title>
+  </head>
+  <body>
+    <!------------------------------------->
+    <!-- HEADER -->
+    <!------------------------------------->
+
+    <header class="header">
+      <a href="#" class="logo">
+        <i class="bi bi-grid-fill"></i>
+        <div class="logo-content">
+          <h1>Priority Matrix <span>PRO</span></h1>
+          <p>Organize your tasks. Focus on what matters.</p>
+        </div>
+      </a>
+
+      <div class="search-box">
+        <i class="bi bi-search"></i>
+        <input type="text" id="searchInput" placeholder="Search tasks..." />
+      </div>
+
+      <nav class="nav">
+        <a href="#" class="nav-link active" data-filter="all">All</a>
+        <a href="#" class="nav-link" data-filter="today">Today</a>
+        <a href="#" class="nav-link" data-filter="completed">Completed</a>
+      </nav>
+
+      <button
+        class="theme-button"
+        id="themeBtn"
+        aria-label="Toggle theme"
+        type="button"
+      >
+        <i class="bi bi-sun-fill sun-icon"></i>
+        <i class="bi bi-moon-fill moon-icon"></i>
+      </button>
+    </header>
+
+    <!------------------------------------->
+    <!-- MAIN -->
+    <!------------------------------------->
+
+    <main>
+      <!------------------------------------->
+      <!-- ADD TASK SECTION -->
+      <!------------------------------------->
+
+      <section class="add-task-section">
+        <div class="add-task-wrapper">
+          <div class="add-task-heading">
+            <i class="bi bi-plus-square-fill"></i>
+            <h2>Add New Task</h2>
+          </div>
+
+          <div class="add-task-inputs">
+            <div class="task-box">
+              <label for="taskTitle">Task Title</label>
+              <input
+                type="text"
+                id="taskTitle"
+                placeholder="e.g. Finish Javascript project"
+              />
+            </div>
+
+            <div class="task-box">
+              <label for="categorySelect">Category</label>
+              <select id="categorySelect">
+                <option value="urgent-important">Urgent & Important</option>
+                <option value="important">Important</option>
+                <option value="urgent">Urgent</option>
+                <option value="later">Later</option>
+              </select>
+            </div>
+
+            <div class="task-box">
+              <label for="dateSelect">Due Date (optional)</label>
+              <input type="date" id="dateSelect" />
+            </div>
+
+            <div class="task-checkbox">
+              <input type="checkbox" id="completedCheckbox" />
+
+              <label for="completedCheckbox">Mark as completed</label>
+            </div>
+
+            <button class="add-task-button" id="addTaskBtn" type="button">
+              <i class="bi bi-plus-lg"></i>
+              Add Task
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!------------------------------------->
+      <!-- OVERVIEW SECTION -->
+      <!------------------------------------->
+
+      <section class="overview-section">
+        <div class="overview-wrapper">
+          <div class="overview-heading">
+            <i class="bi bi-bar-chart-fill"></i>
+            <h2>Overview</h2>
+          </div>
+
+          <div class="overview-cards">
+            <div class="overview-card">
+              <div class="overview-dot grey"></div>
+
+              <div class="overview-content">
+                <p class="overview-title">Total Tasks</p>
+                <span id="totalTasks">8</span>
+              </div>
+            </div>
+
+            <div class="overview-card">
+              <div class="overview-dot green"></div>
+
+              <div class="overview-content">
+                <p>Completed</p>
+                <span id="totalCompleted">3</span>
+              </div>
+            </div>
+
+            <div class="overview-card">
+              <div class="overview-dot blue"></div>
+
+              <div class="overview-content">
+                <p>In Progress</p>
+                <span id="totalInProgress">5</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!------------------------------------->
+      <!-- CARDS SECTION -->
+      <!------------------------------------->
+
+      <section class="cards-section">
+        <div class="cards-wrapper">
+          <div class="priority-card urgent-important-card">
+            <div class="priority-card-heading">
+              <div>
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <h3>Urgent & Important</h3>
+              </div>
+
+              <span class="task-count" id="urgentImportantCount">0</span>
+            </div>
+
+            <p class="priority-description">Do these tasks first.</p>
+
+            <div class="tasks-list" id="urgentImportantList"></div>
+          </div>
+
+          <div class="priority-card important-card">
+            <div class="priority-card-heading">
+              <div>
+                <i class="bi bi-star-fill"></i>
+                <h3>Important</h3>
+              </div>
+
+              <span class="task-count" id="importantCount">0</span>
+            </div>
+
+            <p class="priority-description">Schedule time for these tasks.</p>
+
+            <div class="tasks-list" id="importantList"></div>
+          </div>
+
+          <div class="priority-card urgent-card">
+            <div class="priority-card-heading">
+              <div>
+                <i class="bi bi-lightning-charge-fill"></i>
+                <h3>Urgent</h3>
+              </div>
+
+              <span class="task-count" id="urgentCount">0</span>
+            </div>
+
+            <p class="priority-description">Handle or delegate these tasks.</p>
+
+            <div class="tasks-list" id="urgentList"></div>
+          </div>
+
+          <div class="priority-card later-card">
+            <div class="priority-card-heading">
+              <div>
+                <i class="bi bi-clock-fill"></i>
+                <h3>Later</h3>
+              </div>
+
+              <span class="task-count" id="laterCount">0</span>
+            </div>
+
+            <p class="priority-description">Low priority tasks for later.</p>
+
+            <div class="tasks-list" id="laterList"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!------------------------------------->
+    <!-- FOOTER -->
+    <!------------------------------------->
+
+    <footer class="footer">
+      <div class="footer-wrapper">
+        <div class="footer-left">
+          <p>Priority Matrix PRO</p>
+          <span class="footer-divider"></span>
+          <span>Stay organized. Be productive.</span>
+        </div>
+
+        <div class="footer-right">
+          <span class="footer-dot"></span>
+          <p>Tasks are saved automatically in your browser</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
