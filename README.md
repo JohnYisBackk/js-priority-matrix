@@ -10,7 +10,7 @@ Organize tasks by importance and urgency, track completed work, search and filte
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-[Live Demo]()
+[Live Demo](https://johnyisbackk.github.io/js-priority-matrix/)
 
 </div>
 
@@ -146,9 +146,7 @@ priority-matrix-pro/
 ├── script.js
 ├── LICENSE
 ├── README.md
-│
-└── images/
-    └── preview.png
+├── preview.png
 ```
 
 ---
